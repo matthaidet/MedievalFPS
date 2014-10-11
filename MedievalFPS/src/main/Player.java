@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package mygame;
+package main;
 
 /**
  *
@@ -13,6 +13,12 @@ public class Player {
     private int health;
     private boolean isLiving;
     private LoadOut loadOut;
+    private String name;
+    private int remainingRespawnTime;
     
+    public Player(Profile profile){
+        name = profile.getName();
+        this.remainingRespawnTime = 0;
+    }
     
 }
