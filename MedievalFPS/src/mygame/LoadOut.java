@@ -8,11 +8,6 @@ package mygame;
  *
  * @author MattH
  */
-public class Player {
-    private int score;
-    private int health;
-    private boolean isLiving;
-    private LoadOut loadOut;
-    
+public class LoadOut {
     
 }
