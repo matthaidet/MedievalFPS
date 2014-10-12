@@ -4,13 +4,14 @@
  */
 package main;
 
+import com.jme3.scene.Geometry;
 import java.util.Vector;
 
 /**
  *
  * @author MattH
  */
-public class ModelObject {
+public class ModelObject extends Geometry {
 private String filePath;
     private Vector position;
     private float glow;
