@@ -10,6 +10,7 @@ import com.jme3.scene.Node;
 import com.jme3.scene.shape.Box;
 import com.jme3.scene.Spatial;
 import com.jme3.niftygui.NiftyJmeDisplay;
+import com.jme3.scene.shape.Sphere;
 import de.lessvoid.nifty.Nifty;
 import de.lessvoid.nifty.screen.Screen;
 import de.lessvoid.nifty.screen.ScreenController;
@@ -24,16 +25,16 @@ import com.jme3.water.SimpleWaterProcessor;
 public class Main extends SimpleApplication implements ScreenController {
 
     private Nifty nifty;
-
     Spatial waterPlane;
     Geometry lightSphere;
     SimpleWaterProcessor waterProcessor;
     Node sceneNode;
-    
+    private Vector3f lightPos =  new Vector3f(33,12,-29);
     public static void main(String[] args) {
         Main app = new Main();
         app.start();
         GUI gui = new GUI();
+        
     }
 
     @Override
@@ -65,17 +66,21 @@ public class Main extends SimpleApplication implements ScreenController {
         waterProcessor.setDebug(false);
         viewPort.addProcessor(waterProcessor);
         //create water quad
-       
+       waterPlane = waterProcessor.createWaterGeometry(100, 100);
         waterPlane=(Spatial)  assetManager.loadModel("Models/Water.mesh.xml");
         waterPlane.setMaterial(waterProcessor.getMaterial());
-        waterPlane.setLocalScale(50);
-        waterPlane.setLocalTranslation(-5, 0, 5);
+        waterPlane.setLocalScale(256);
+        waterPlane.setLocalTranslation(-5, 5, 5);
+        waterProcessor.setLightPosition(lightPos);
         waterPlane.setMaterial(waterProcessor.getMaterial());
         rootNode.attachChild(waterPlane);
+        
+        
         
     }
     @Override
     public void simpleUpdate(float tpf) {
+        waterProcessor.setLightPosition(lightPos);
         //TODO: add update code
         
     }
