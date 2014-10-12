@@ -2,17 +2,18 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package main;
-
+package main.gui;
+import main.GUI;
 /**
  *
  * @author MattH
  */
-public class ModelObject {
-private String filePath;
-
-    public ModelObject(String filePath){
+public class Menu extends GUI{
+    public Menu(){ 
+    }
+    
+    public void display(){
         
     }
-
+    
 }
