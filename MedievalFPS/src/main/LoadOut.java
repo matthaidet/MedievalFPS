@@ -12,6 +12,7 @@ public class LoadOut {
     private float healthStat;
     private float armorStat;
     private float speedStat;
+    private Weapon[] weapons;
 
     public LoadOut() {
     }
