@@ -9,5 +9,5 @@ package main;
  * @author MattH
  */
 public class Map {
-    
+    static private String sceneFilePath;
 }
