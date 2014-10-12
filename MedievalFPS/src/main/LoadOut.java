@@ -9,5 +9,14 @@ package main;
  * @author MattH
  */
 public class LoadOut {
-    
+    private float healthStat;
+    private float armorStat;
+    private float speedStat;
+
+    public LoadOut() {
+    }
+
+    public float getHealthStat() {
+        return healthStat;
+    }
 }
