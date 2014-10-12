@@ -5,16 +5,22 @@
 package main;
 
 import com.jme3.app.SimpleApplication;
+import com.jme3.niftygui.NiftyJmeDisplay;
 import de.lessvoid.nifty.Nifty;
-import de.lessvoid.nifty.screen.Screen;
 import de.lessvoid.nifty.screen.ScreenController;
+import main.GUI;
+import main.Main;
 
 /**
  *
  * @author MattH
  */
-public class GUI extends Main {
+public class HUD extends GUI{
 
-    public GUI() {
+    private Nifty nifty;
+
+    public HUD() {
     }
+
+  
 }

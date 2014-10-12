@@ -19,13 +19,11 @@ import com.jme3.water.SimpleWaterProcessor;
  * @author normenhansen
  */
 public class Main extends SimpleApplication implements ScreenController {
-
     private Nifty nifty;
+    private NiftyJmeDisplay hudDisplay;
     public static void main(String[] args) {
         Main app = new Main();
         app.start();
-        GUI gui = new GUI();
-        
     }
 
     @Override
@@ -35,6 +33,7 @@ public class Main extends SimpleApplication implements ScreenController {
                 "Models/Scenes/scene1.j3o");
         rootNode.attachChild(myTerrain);
 
+// attach the nifty display to the gui view port as a processor
         NiftyJmeDisplay niftyDisplay = new NiftyJmeDisplay(assetManager,
                 inputManager,
                 audioRenderer,
@@ -42,8 +41,8 @@ public class Main extends SimpleApplication implements ScreenController {
         nifty = niftyDisplay.getNifty();
         nifty.fromXml("Interface/HUD.xml", "start", this);
 
-        // attach the nifty display to the gui view port as a processor
         guiViewPort.addProcessor(niftyDisplay);
+
         
         rootNode.attachChild(SkyFactory.createSky(assetManager, "Textures/skybox1.dds", false));
         
