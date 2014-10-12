@@ -9,5 +9,7 @@ package main;
  * @author MattH
  */
 public class GUI {
-    
+
+    public GUI() {
+    }
 }
