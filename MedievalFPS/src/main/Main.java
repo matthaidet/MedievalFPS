@@ -13,6 +13,9 @@ import com.jme3.niftygui.NiftyJmeDisplay;
 import de.lessvoid.nifty.Nifty;
 import de.lessvoid.nifty.screen.Screen;
 import de.lessvoid.nifty.screen.ScreenController;
+import com.jme3.util.SkyFactory;
+import com.jme3.water.WaterFilter;
+import com.jme3.water.SimpleWaterProcessor;
 
 /**
  * test
@@ -49,15 +52,23 @@ public class Main extends SimpleApplication implements ScreenController {
 
         // attach the nifty display to the gui view port as a processor
         guiViewPort.addProcessor(niftyDisplay);
+        
+    
 
-    }
-
-
+        rootNode.attachChild(SkyFactory.createSky(assetManager, "Textures/skybox1.dds", false));
+        sceneNode = new Node("Scene");
+        
+        rootNode.attachChild(sceneNode);
+        //WATER
+        waterProcessor = new SimpleWaterProcessor(assetManager);
+        waterProcessor.setReflectionScene(sceneNode);
+        waterProcessor.setDebug(false);
+        viewPort.addProcessor(waterProcessor);
         //create water quad
        
         waterPlane=(Spatial)  assetManager.loadModel("Models/Water.mesh.xml");
         waterPlane.setMaterial(waterProcessor.getMaterial());
-        waterPlane.setLocalScale(40);
+        waterPlane.setLocalScale(50);
         waterPlane.setLocalTranslation(-5, 0, 5);
         waterPlane.setMaterial(waterProcessor.getMaterial());
         rootNode.attachChild(waterPlane);
