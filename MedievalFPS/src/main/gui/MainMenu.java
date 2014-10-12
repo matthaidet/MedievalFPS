@@ -2,12 +2,12 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package mygame;
+package main.gui;
 
 /**
  *
  * @author MattH
  */
-public class GUI {
+public class MainMenu extends Menu {
     
 }
