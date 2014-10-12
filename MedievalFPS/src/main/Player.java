@@ -72,4 +72,7 @@ public class Player extends CharacterControl {
         main.getCam().setLocation(this.getPhysicsLocation());
     }
     
+    float getHealth() {
+        return health;
+    }
 }
