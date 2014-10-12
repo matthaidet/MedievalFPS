@@ -13,7 +13,7 @@ import de.lessvoid.nifty.screen.ScreenController;
  *
  * @author MattH
  */
-public class GUI extends Main {
+public class GUI {
 
     public GUI() {
     }
