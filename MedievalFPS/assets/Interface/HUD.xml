@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nifty>
+  <screen id="start" controller="jme3test.niftygui.TestNiftyGui">
+      <layer id="crossHair" backgroundColor="#0000" childLayout="center">
+          <image filename = "Interface/crosshair.png">
+
+          </image>
+
+    </layer>
+  </screen>
+  <screen id="end">
+  </screen>
+</nifty>
