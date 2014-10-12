@@ -2,10 +2,8 @@
 <nifty>
   <screen id="start" controller="jme3test.niftygui.TestNiftyGui">
       <layer id="crossHair" backgroundColor="#0000" childLayout="center">
-          <image filename = "Interface/crosshair.png">
-
+          <image filename = "Interface/crosshair.png" width="25%" height="30%">
           </image>
-
     </layer>
   </screen>
   <screen id="end">
