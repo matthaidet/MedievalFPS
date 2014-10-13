@@ -72,7 +72,7 @@ public class Main extends SimpleApplication {
     void healthMeter() { //sketchy heath meter. you should probably find a better data output
         float health = player.getHealth();
         String healthString = String.valueOf(health);
-        fpsText.setText("Health: "+healthString);
+        //fpsText.setText("Health: "+healthString);
     }
 
     @Override
