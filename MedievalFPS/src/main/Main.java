@@ -4,7 +4,6 @@ import com.jme3.app.SimpleApplication;
 import com.jme3.audio.AudioRenderer;
 import com.jme3.bullet.BulletAppState;
 import com.jme3.renderer.RenderManager;
-import com.jme3.scene.Spatial;
 import com.jme3.renderer.Camera;
 import de.lessvoid.nifty.Nifty;
 import de.lessvoid.nifty.screen.Screen;
@@ -28,22 +27,13 @@ public class Main extends SimpleApplication {
 
     @Override
     public void simpleInitApp() {
-        
         player = new Player(new Profile());
         game = new Game(this, new DesertIsland(), player, nifty);
     }
 
-
     @Override
     public void simpleUpdate(float tpf) {
-        healthMeter(); //update impromptu health meter
         game.gameLoop();
-    }
-    
-    void healthMeter() { //sketchy heath meter. you should probably find a better data output
-        float health = player.getHealth();
-        String healthString = String.valueOf(health);
-        //fpsText.setText("Health: "+healthString);
     }
 
     @Override
