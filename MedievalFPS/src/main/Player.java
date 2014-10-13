@@ -53,7 +53,7 @@ public class Player extends CharacterControl {
         this.setJumpSpeed(20);
         this.setFallSpeed(30);
         this.setGravity(30);
-        this.setPhysicsLocation(new Vector3f(-50, 200, 0));
+        this.setPhysicsLocation(new Vector3f(-50, 100, 0));
     }
 
     public void update(Main main, Controls controls) {
@@ -89,6 +89,9 @@ public class Player extends CharacterControl {
             if (cam.getDirection().getY() >= -.3f) { //fixes flying glitch
                 if (this.onGround()) {
                     walkDirection.addLocal(camDir.negate());
+                } else {
+                    camDir.set(cam.getDirection()).multLocal(speed / 1.5f);
+                    walkDirection.addLocal(camDir.negate());
                 }
             } else {
                 walkDirection.addLocal(camDir.negate().setY(-.3f));
@@ -108,7 +111,7 @@ public class Player extends CharacterControl {
         this.setWalkDirection(walkDirection);
         cam.setLocation(this.getPhysicsLocation());
     }
-    
+
     float getHealth() {
         return health;
     }
