@@ -5,7 +5,6 @@
 package main;
 
 import main.loadOuts.LoadOut;
-import com.jme3.bullet.BulletAppState;
 import com.jme3.bullet.collision.shapes.CapsuleCollisionShape;
 import com.jme3.bullet.control.CharacterControl;
 import com.jme3.math.Vector3f;
@@ -20,6 +19,7 @@ public class Player extends CharacterControl {
     private int score;
     private float health;
     private float maxHealth;
+    private float healthRegen;
     private int deaths;
     private boolean isLiving;
     private LoadOut loadOut;
@@ -30,22 +30,24 @@ public class Player extends CharacterControl {
     private Vector3f camDir = new Vector3f();
     private Vector3f camLeft = new Vector3f();
     private Vector3f walkDirection = new Vector3f();
-    private BulletAppState bulletAppState;
-    private CapsuleCollisionShape capsuleShape;
 
     public Player(Profile profile) {
-        capsuleShape = new CapsuleCollisionShape(1.5f, 6f, 1);
+        CapsuleCollisionShape capsuleShape = new CapsuleCollisionShape(1.5f, 6f, 1);
         this.setCollisionShape(capsuleShape);
         this.stepHeight = 0.05f;
         name = profile.getName();
         this.remainingRespawnTime = 0;
         this.speed = .5f;
+        remainingRespawnTime = 0;
     }
 
     public void spawn(Vector3f p, LoadOut loadOut) {
         position = p;
-        isLiving = true;
+        maxHealth = loadOut.getMaxHealth();
+        speed = loadOut.getSpeed();
+        healthRegen = loadOut.getHealthRegen();
         health = maxHealth;
+        isLiving = true;
     }
 
     public void init(Main main, Environment environment) {
