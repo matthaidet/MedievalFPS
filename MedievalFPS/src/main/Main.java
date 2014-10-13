@@ -63,9 +63,6 @@ public class Main extends SimpleApplication {
         rootNode.addLight(dl);
     }
 
-  
-
-  
     @Override
     public void simpleUpdate(float tpf) {
         player.update(this, controls);
