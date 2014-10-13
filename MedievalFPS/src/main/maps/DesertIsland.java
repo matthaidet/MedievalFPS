@@ -48,4 +48,8 @@ public class DesertIsland implements Map {
     public int getPlayerCapacity() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    public String getMapName() {
+        return "Desert-Island";
+    }
 }

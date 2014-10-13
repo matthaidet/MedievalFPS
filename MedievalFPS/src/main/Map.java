@@ -22,6 +22,8 @@ public interface Map {
 
     public String getMiniMapFilePath();
 
+    public String getMapName();
+
     public Vector3f[] getTeamOneSpawnPoints();
 
     public Vector3f[] getTeamTwoSpawnPoints();

@@ -1,5 +1,6 @@
 package main;
 
+import main.gui.HUD;
 import com.jme3.app.SimpleApplication;
 import com.jme3.asset.AssetManager;
 import com.jme3.audio.AudioRenderer;
