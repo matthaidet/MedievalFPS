@@ -28,10 +28,9 @@ public class Main extends SimpleApplication implements ScreenController {
 
     @Override
     public void simpleInitApp() {
+        initializeWorld(); //initialize water processor and other things and loads terrain
         flyCam.setMoveSpeed(30); //i think we all agree that the camera was too damn slow!
-        Spatial myTerrain = assetManager.loadModel(
-                "Models/Scenes/scene1.j3o");
-        rootNode.attachChild(myTerrain);
+        
 
 // attach the nifty display to the gui view port as a processor
         NiftyJmeDisplay niftyDisplay = new NiftyJmeDisplay(assetManager,
@@ -42,14 +41,8 @@ public class Main extends SimpleApplication implements ScreenController {
         nifty.fromXml("Interface/HUD.xml", "start", this);
 
         guiViewPort.addProcessor(niftyDisplay);
-
-        
-        rootNode.attachChild(SkyFactory.createSky(assetManager, "Textures/skybox1.dds", false));
-        
          
-        FilterPostProcessor water;
-        water = assetManager.loadFilter("Models/waterFilter.j3f");
-        viewPort.addProcessor(water);
+        
         
     }
     @Override
@@ -79,4 +72,13 @@ public class Main extends SimpleApplication implements ScreenController {
     public void quit() {
         nifty.gotoScreen("end");
     }
+    
+   public void initializeWorld() {
+       FilterPostProcessor water;
+       water = assetManager.loadFilter("Models/waterFilter.j3f");
+       viewPort.addProcessor(water);
+       Spatial myTerrain = assetManager.loadModel(
+                "Models/Scenes/scene1.j3o");
+       rootNode.attachChild(myTerrain);
+   }
 }
