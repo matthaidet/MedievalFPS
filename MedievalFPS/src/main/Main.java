@@ -2,11 +2,14 @@ package main;
 
 import com.bulletphysics.collision.shapes.CollisionShape;
 import com.jme3.app.SimpleApplication;
+import com.jme3.asset.AssetManager;
+import com.jme3.audio.AudioRenderer;
 import com.jme3.bullet.BulletAppState;
 import com.jme3.bullet.collision.shapes.CapsuleCollisionShape;
 import com.jme3.bullet.control.CharacterControl;
 import com.jme3.bullet.control.RigidBodyControl;
 import com.jme3.bullet.util.CollisionShapeFactory;
+import com.jme3.input.InputManager;
 import com.jme3.input.KeyInput;
 import com.jme3.input.controls.ActionListener;
 import com.jme3.input.controls.KeyTrigger;
@@ -33,6 +36,7 @@ import com.jme3.water.SimpleWaterProcessor;
 public class Main extends SimpleApplication implements ActionListener {
     private Nifty nifty;
     private Spatial sceneModel;
+    private HUD hud;
     private BulletAppState bulletAppState;
     private RigidBodyControl landscape;
     private CharacterControl player;
@@ -40,7 +44,6 @@ public class Main extends SimpleApplication implements ActionListener {
     private boolean left = false, right = false, up = false, down = false;
     private Vector3f camDir = new Vector3f();
     private Vector3f camLeft = new Vector3f();
-    private NiftyJmeDisplay hudDisplay;
     public static void main(String[] args) {
         Main app = new Main();
         app.start();
@@ -48,6 +51,8 @@ public class Main extends SimpleApplication implements ActionListener {
 
     @Override
     public void simpleInitApp() {
+        hud = new HUD();
+        hud.displayHUD(nifty, this);
         bulletAppState = new BulletAppState();
         stateManager.attach(bulletAppState);
         initializeWorld(); //initialize water processor and other things and loads terrain
@@ -176,19 +181,15 @@ public class Main extends SimpleApplication implements ActionListener {
        rootNode.attachChild(noCollisions);
     }
 
-    public void initializeGUI() {
-        /*  // attach the nifty display to the gui view port as a processor
-         NiftyJmeDisplay niftyDisplay = new NiftyJmeDisplay(assetManager,
-                inputManager,
-                audioRenderer,
-                guiViewPort);
-        nifty = niftyDisplay.getNifty();
+    public AssetManager getAssetManager() {
+        return assetManager;
+    }
 
-         nifty.fromXml("Interface/HUD.xml", "start", this);
+    public InputManager getInputManager() {
+        return inputManager;
+    }
 
-        guiViewPort.addProcessor(niftyDisplay);
-
-         */
-
+    public AudioRenderer getAudioManager() {
+        return audioRenderer;
     }
 }
