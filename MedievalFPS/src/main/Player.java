@@ -8,6 +8,7 @@ import com.jme3.bullet.BulletAppState;
 import com.jme3.bullet.collision.shapes.CapsuleCollisionShape;
 import com.jme3.bullet.control.CharacterControl;
 import com.jme3.math.Vector3f;
+import com.jme3.renderer.Camera;
 
 
 /**
@@ -53,8 +54,9 @@ public class Player extends CharacterControl {
     }
 
     public void update(Main main, Controls controls) {
-        camDir.set(main.getCam().getDirection()).multLocal(0.6f);
-        camLeft.set(main.getCam().getLeft()).multLocal(0.4f);
+        Camera cam = main.getCam();
+        camDir.set(cam.getDirection()).multLocal(0.6f);
+        camLeft.set(cam.getLeft()).multLocal(0.4f);
         walkDirection.set(0, 0, 0);
         if (controls.getIsLeft()) {
             walkDirection.addLocal(camLeft);
@@ -68,8 +70,12 @@ public class Player extends CharacterControl {
         if (controls.getIsDown()) {
             walkDirection.addLocal(camDir.negate());
         }
+        if (cam.getUp().getY() <= 1f && cam.getDirection().getY() <= -.3f) {
+            System.out.println(cam.getUp());
+            System.out.print(cam.getDirection());
+        }
         this.setWalkDirection(walkDirection);
-        main.getCam().setLocation(this.getPhysicsLocation());
+        cam.setLocation(this.getPhysicsLocation());
     }
     
 }

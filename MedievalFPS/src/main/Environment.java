@@ -41,6 +41,7 @@ public class Environment {
         Spatial decorations = assetManager.loadModel(
                 "Models/Scenes/noCollisionScene.j3o");
         rootNode.attachChild(decorations);
+        rootNode.attachChild(sceneModel);
         this.setUpLight();
     }
 

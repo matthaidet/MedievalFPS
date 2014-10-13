@@ -5,10 +5,6 @@ import com.jme3.asset.AssetManager;
 import com.jme3.audio.AudioRenderer;
 import com.jme3.bullet.BulletAppState;
 import com.jme3.input.InputManager;
-import com.jme3.light.AmbientLight;
-import com.jme3.light.DirectionalLight;
-import com.jme3.math.ColorRGBA;
-import com.jme3.math.Vector3f;
 import com.jme3.renderer.RenderManager;
 import com.jme3.scene.Spatial;
 import com.jme3.renderer.Camera;
@@ -40,7 +36,6 @@ public class Main extends SimpleApplication {
         environment = new Environment(this);
         player = new Player(new Profile());
         bulletAppState.getPhysicsSpace().add(player);
-        rootNode.attachChild(environment.getSceneModel());
         bulletAppState.getPhysicsSpace().add(environment.getLandscape());
         controls = new Controls(player);
         hud = new HUD();
