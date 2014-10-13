@@ -68,12 +68,13 @@ public class Player extends CharacterControl {
             walkDirection.addLocal(camDir);
         }
         if (controls.getIsDown()) {
-            walkDirection.addLocal(camDir.negate());
+            if (cam.getDirection().getY() >= -.3f) { //fixes flying glitch
+                walkDirection.addLocal(camDir.negate());
+            } else {
+                walkDirection.addLocal(camDir.negate().setY(-.3f));
+            }
         }
-        if (cam.getUp().getY() <= 1f && cam.getDirection().getY() <= -.3f) {
-            System.out.println(cam.getUp());
-            System.out.print(cam.getDirection());
-        }
+        
         this.setWalkDirection(walkDirection);
         cam.setLocation(this.getPhysicsLocation());
     }
