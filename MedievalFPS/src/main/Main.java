@@ -36,10 +36,9 @@ public class Main extends SimpleApplication {
 
     @Override
     public void simpleInitApp() {
-        initializeWorld(); 
-        environment = new Environment(this);
         bulletAppState = new BulletAppState();
         stateManager.attach(bulletAppState);
+        environment = new Environment(this);
         player = new Player(new Profile());
         bulletAppState.getPhysicsSpace().add(player);
         rootNode.attachChild(environment.getSceneModel());
@@ -50,7 +49,7 @@ public class Main extends SimpleApplication {
         controls.setUpKeys(this);
         player.init(this, environment);
         setUpLight();
-        //initialize water processor and other things and loads terrain
+        initializeWorld(); //initialize water processor and other things and loads terrain
     }
 
     private void setUpLight() {
@@ -99,12 +98,12 @@ public class Main extends SimpleApplication {
        FilterPostProcessor water;
        water = assetManager.loadFilter("Models/waterFilter.j3f");
        viewPort.addProcessor(water);
-       //Spatial myTerrain = assetManager.loadModel(
-                //"Models/Scenes/scene2.j3o");
-       //rootNode.attachChild(myTerrain);
-       //Spatial noCollisions = assetManager.loadModel(
-               //"Models/Scenes/noCollisionScene.j3o");
-       //rootNode.attachChild(noCollisions);
+       Spatial myTerrain = assetManager.loadModel(
+                "Models/Scenes/scene1.j3o");
+       rootNode.attachChild(myTerrain);
+       Spatial noCollisions = assetManager.loadModel(
+               "Models/Scenes/noCollisionScene.j3o");
+       rootNode.attachChild(noCollisions);
     }
 
     public AssetManager getAssetManager() {

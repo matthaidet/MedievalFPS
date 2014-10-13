@@ -4,12 +4,9 @@
  */
 package main;
 
-import com.jme3.bullet.BulletAppState;
-import com.jme3.bullet.control.RigidBodyControl;
 import com.jme3.input.KeyInput;
 import com.jme3.input.controls.ActionListener;
 import com.jme3.input.controls.KeyTrigger;
-import com.jme3.math.Vector3f;
 
 /**
  *
