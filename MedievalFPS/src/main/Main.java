@@ -23,7 +23,6 @@ import de.lessvoid.nifty.screen.Screen;
 public class Main extends SimpleApplication {
     private BulletAppState bulletAppState;
     private Nifty nifty;
-    private Spatial sceneModel;
     private HUD hud;
     private Controls controls;
     private Player player;
@@ -105,6 +104,8 @@ public class Main extends SimpleApplication {
        Spatial noCollisions = assetManager.loadModel(
                "Models/Scenes/noCollisionScene.j3o");
        rootNode.attachChild(noCollisions);
+       cam.setFrustumFar(5000); //increases render distance a shit ton
+       cam.onFrameChange(); //the creepy man on the internet told me to put this here
     }
 
     public AssetManager getAssetManager() {
