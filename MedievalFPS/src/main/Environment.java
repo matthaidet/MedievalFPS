@@ -40,7 +40,7 @@ public class Environment {
         Spatial decorations = assetManager.loadModel(map.getDecorationsFilePath());
         rootNode.attachChild(decorations);
         rootNode.attachChild(sceneModel);
-        //this.setUpLight();
+        this.setUpLight();
     }
 
     private void setUpLight() {
