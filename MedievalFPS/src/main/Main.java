@@ -50,8 +50,7 @@ public class Main extends SimpleApplication implements ScreenController {
 
         // attach the nifty display to the gui view port as a processor
         guiViewPort.addProcessor(niftyDisplay);
-        
-        rootNode.attachChild(SkyFactory.createSky(assetManager, "Textures/skybox1.dds", false));
+       
         
          
         FilterPostProcessor water;
