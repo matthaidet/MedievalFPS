@@ -49,8 +49,8 @@ public class Player extends CharacterControl {
         main.getFlyByCamera().setMoveSpeed(100);
         this.setJumpSpeed(20);
         this.setFallSpeed(30);
-        this.setGravity(40);
-        this.setPhysicsLocation(new Vector3f(-50, 200, 0));
+        this.setGravity(30);
+        this.setPhysicsLocation(new Vector3f(-50, 500, 0));
     }
 
     public void update(Main main, Controls controls) {
