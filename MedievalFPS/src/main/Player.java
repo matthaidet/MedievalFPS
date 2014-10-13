@@ -8,6 +8,7 @@ import com.jme3.bullet.BulletAppState;
 import com.jme3.bullet.collision.shapes.CapsuleCollisionShape;
 import com.jme3.bullet.control.CharacterControl;
 import com.jme3.math.Vector3f;
+import com.jme3.renderer.Camera;
 
 /**
  *
@@ -52,7 +53,7 @@ public class Player extends CharacterControl {
         this.setJumpSpeed(20);
         this.setFallSpeed(30);
         this.setGravity(30);
-        this.setPhysicsLocation(new Vector3f(-50, 500, 0));
+        this.setPhysicsLocation(new Vector3f(-50, 200, 0));
     }
 
     public void update(Main main, Controls controls) {
@@ -105,7 +106,7 @@ public class Player extends CharacterControl {
         }
 
         this.setWalkDirection(walkDirection);
-        main.getCam().setLocation(this.getPhysicsLocation());
+        cam.setLocation(this.getPhysicsLocation());
     }
     
     float getHealth() {
