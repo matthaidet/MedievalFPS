@@ -24,7 +24,6 @@ public class Environment {
     public Environment(Main main) {
         AssetManager assetManager = main.getAssetManager();
         Node rootNode = main.getRootNode();
-
         sceneModel = main.getAssetManager().loadModel("Models/Scenes/originalScene.j3o");
         CollisionShape sceneShape =
                 CollisionShapeFactory.createMeshShape((Node) sceneModel);
