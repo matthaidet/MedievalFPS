@@ -8,5 +8,15 @@ package main;
  *
  * @author MattH
  */
-public class Weapon {
+public interface Weapon {
+
+    public String getName();
+
+    public float getDamage();
+
+    public void action();
+
+    public String getIconPath();
+
+    public float getAttackSpeed();
 }
