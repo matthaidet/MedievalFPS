@@ -3,7 +3,6 @@
  * and open the template in the editor.
  */
 package main.gui;
-import main.GUI;
 /**
  *
  * @author MattH
