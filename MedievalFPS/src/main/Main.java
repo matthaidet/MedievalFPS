@@ -51,7 +51,7 @@ public class Main extends SimpleApplication implements ActionListener {
         bulletAppState = new BulletAppState();
         stateManager.attach(bulletAppState);
         initializeWorld(); //initialize water processor and other things and loads terrain
-        flyCam.setMoveSpeed(30); //i think we all agree that the camera was too damn slow!
+        flyCam.setMoveSpeed(10); //i think we all agree that the camera was too damn slow!
         setUpKeys();
         setUpLight();
         sceneModel = assetManager.loadModel("Models/Scenes/scene1.j3o");
@@ -64,7 +64,7 @@ public class Main extends SimpleApplication implements ActionListener {
         CapsuleCollisionShape capsuleShape = new CapsuleCollisionShape(1.5f, 6f, 1);
         player = new CharacterControl(capsuleShape, 0.05f);
         player.setJumpSpeed(20);
-        player.setFallSpeed(30);
+        player.setFallSpeed(50);
         player.setGravity(30);
         player.setPhysicsLocation(new Vector3f(-50, 100, 0));
 
@@ -171,6 +171,9 @@ public class Main extends SimpleApplication implements ActionListener {
        Spatial myTerrain = assetManager.loadModel(
                 "Models/Scenes/scene1.j3o");
        rootNode.attachChild(myTerrain);
+       Spatial noCollisions = assetManager.loadModel(
+               "Models/Scenes/noCollisionScene.j3o");
+       rootNode.attachChild(noCollisions);
     }
 
     public void initializeGUI() {
