@@ -1,13 +1,8 @@
 package main;
 
-import main.gui.HUD;
 import com.jme3.app.SimpleApplication;
 import com.jme3.audio.AudioRenderer;
 import com.jme3.bullet.BulletAppState;
-import com.jme3.light.AmbientLight;
-import com.jme3.light.DirectionalLight;
-import com.jme3.math.ColorRGBA;
-import com.jme3.math.Vector3f;
 import com.jme3.renderer.RenderManager;
 import com.jme3.scene.Spatial;
 import com.jme3.renderer.Camera;
@@ -20,13 +15,11 @@ import main.maps.DesertIsland;
  * @author normenhansen
  */
 public class Main extends SimpleApplication {
-    private BulletAppState bulletAppState;
+    public BulletAppState bulletAppState;
     private Nifty nifty;
-    private Spatial sceneModel;
-    private HUD hud;
-    private Controls controls;
     private Player player;
     private Environment environment;
+    private Game game;
  
     public static void main(String[] args) {
         Main app = new Main();
@@ -35,37 +28,16 @@ public class Main extends SimpleApplication {
 
     @Override
     public void simpleInitApp() {
-        bulletAppState = new BulletAppState();
-        stateManager.attach(bulletAppState);
-        environment = new Environment(this, new DesertIsland());
+        
         player = new Player(new Profile());
-        bulletAppState.getPhysicsSpace().add(player);
-        rootNode.attachChild(environment.getSceneModel());
-        bulletAppState.getPhysicsSpace().add(environment.getLandscape());
-        controls = new Controls(player);
-        hud = new HUD();
-        hud.displayHUD(nifty, this);
-        controls.setUpKeys(this);
-        player.init(this, environment);
-        setUpLight();
+        game = new Game(this, new DesertIsland(), player, nifty);
     }
 
-    private void setUpLight() {
-        // We add light so we see the scene
-        AmbientLight al = new AmbientLight();
-        al.setColor(ColorRGBA.White.mult(1.3f));
-        rootNode.addLight(al);
-
-        DirectionalLight dl = new DirectionalLight();
-        dl.setColor(ColorRGBA.White);
-        dl.setDirection(new Vector3f(2.8f, -2.8f, -2.8f).normalizeLocal());
-        rootNode.addLight(dl);
-    }
 
     @Override
     public void simpleUpdate(float tpf) {
         healthMeter(); //update impromptu health meter
-        player.update(this, controls);
+        game.gameLoop();
     }
     
     void healthMeter() { //sketchy heath meter. you should probably find a better data output
