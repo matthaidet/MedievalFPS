@@ -19,29 +19,21 @@ import com.jme3.water.SimpleWaterProcessor;
  * @author normenhansen
  */
 public class Main extends SimpleApplication implements ScreenController {
-
     private Nifty nifty;
-    int numScenes = 5; //declares number of spaces in Scene array
-    private String[] scene = new String[numScenes];
-    int currentScene; //dictates which scene is loaded into
-    
+    private NiftyJmeDisplay hudDisplay;
     public static void main(String[] args) {
         Main app = new Main();
         app.start();
-        GUI gui = new GUI();
-        
     }
 
     @Override
     public void simpleInitApp() {
-        populateSceneArray(); //fills scene array with file paths
-        initializeWorld(); //initializes water processor (and future effects)
-        currentScene = 0; //dictates which scene is loaded into
         flyCam.setMoveSpeed(30); //i think we all agree that the camera was too damn slow!
         Spatial myTerrain = assetManager.loadModel(
-                scene[currentScene]);
+                "Models/Scenes/scene1.j3o");
         rootNode.attachChild(myTerrain);
 
+// attach the nifty display to the gui view port as a processor
         NiftyJmeDisplay niftyDisplay = new NiftyJmeDisplay(assetManager,
                 inputManager,
                 audioRenderer,
@@ -49,12 +41,15 @@ public class Main extends SimpleApplication implements ScreenController {
         nifty = niftyDisplay.getNifty();
         nifty.fromXml("Interface/HUD.xml", "start", this);
 
-        // attach the nifty display to the gui view port as a processor
         guiViewPort.addProcessor(niftyDisplay);
-       
+
+        
+        rootNode.attachChild(SkyFactory.createSky(assetManager, "Textures/skybox1.dds", false));
         
          
-       
+        FilterPostProcessor water;
+        water = assetManager.loadFilter("Models/waterFilter.j3f");
+        viewPort.addProcessor(water);
         
     }
     @Override
@@ -83,16 +78,5 @@ public class Main extends SimpleApplication implements ScreenController {
 
     public void quit() {
         nifty.gotoScreen("end");
-    }
-    
-    public void populateSceneArray() {
-        scene[0] = "Models/Scenes/scene1.j3o";
-        scene[1] = "Models/Scenes/scene2.j3o";
-    }
-    
-    public void initializeWorld() {
-        FilterPostProcessor water;
-        water = assetManager.loadFilter("Models/waterFilter.j3f");
-        viewPort.addProcessor(water);
     }
 }

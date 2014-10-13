@@ -4,11 +4,16 @@
  */
 package main;
 
+import com.jme3.app.SimpleApplication;
+import de.lessvoid.nifty.Nifty;
+import de.lessvoid.nifty.screen.Screen;
+import de.lessvoid.nifty.screen.ScreenController;
+
 /**
  *
  * @author MattH
  */
-public class GUI {
+public class GUI extends Main {
 
     public GUI() {
     }
