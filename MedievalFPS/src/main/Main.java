@@ -37,7 +37,6 @@ public class Main extends SimpleApplication {
     @Override
     public void simpleInitApp() {
         environment = new Environment(this);
-
         bulletAppState = new BulletAppState();
         stateManager.attach(bulletAppState);
         player = new Player(new Profile());
