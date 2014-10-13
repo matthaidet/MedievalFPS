@@ -4,12 +4,18 @@
  */
 package main;
 
+import java.util.Vector;
+
 /**
  *
  * @author MattH
  */
 public class ModelObject {
 private String filePath;
+    private Vector position;
+    private float glow;
+    private Vector hitBox;
+
 
     public ModelObject(String filePath){
         
