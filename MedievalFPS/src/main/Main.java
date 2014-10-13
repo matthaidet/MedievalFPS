@@ -36,9 +36,9 @@ public class Main extends SimpleApplication {
 
     @Override
     public void simpleInitApp() {
-        environment = new Environment(this);
         bulletAppState = new BulletAppState();
         stateManager.attach(bulletAppState);
+        environment = new Environment(this);
         player = new Player(new Profile());
         bulletAppState.getPhysicsSpace().add(player);
         rootNode.attachChild(environment.getSceneModel());
