@@ -16,10 +16,10 @@ public class DesertIsland implements Map {
     Vector3f[] teamOneSpawnPoints;
     Vector3f[] teamTwoSpawnPoints;
     Vector3f[] neutralSpawnPoints;
-    String terrainFilePath = "Maps/desertIsland/desertIslandTerrain.j30";
+    String terrainFilePath = "Maps/desertIsland/Scenes/desertIslandTerrain.j3o";
     String loadingScreenFilePath = "";
-    String decorationFilePath = "Maps/desertIsland/desertIslandDecorations.j303";
-    String boundariesFilePath = "Maps/desertIsland/desertIslandBoundaries.j3o";
+    String decorationFilePath = "Maps/desertIsland/Scenes/desertIslandDecorations.j3o";
+    String boundariesFilePath = "Maps/desertIsland/Scenes/desertIslandBoundaries.j3o";
     String teamOneBoundariesFilePath = "";
     String teamTwoBoundariesFilePath = "";
     String waterFilterFilePath = "Maps/desertIsland/desertIslandWaterFilter.j3f";
