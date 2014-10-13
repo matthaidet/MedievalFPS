@@ -49,7 +49,6 @@ public class Main extends SimpleApplication {
         controls.setUpKeys(this);
         player.init(this, environment);
         setUpLight();
-        initializeWorld(); //initialize water processor and other things and loads terrain
     }
 
     private void setUpLight() {
@@ -94,18 +93,6 @@ public class Main extends SimpleApplication {
         nifty.gotoScreen("end");
     }
     
-   public void initializeWorld() {
-       FilterPostProcessor water;
-       water = assetManager.loadFilter("Models/waterFilter.j3f");
-       viewPort.addProcessor(water);
-       Spatial myTerrain = assetManager.loadModel(
-                "Models/Scenes/scene1.j3o");
-       rootNode.attachChild(myTerrain);
-       Spatial noCollisions = assetManager.loadModel(
-               "Models/Scenes/noCollisionScene.j3o");
-       rootNode.attachChild(noCollisions);
-    }
-
     public AssetManager getAssetManager() {
         return assetManager;
     }
