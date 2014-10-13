@@ -4,8 +4,6 @@
  */
 package main.weapons;
 
-import main.Weapon;
-
 /**
  *
  * @author MattH

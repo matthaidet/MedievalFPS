@@ -4,6 +4,7 @@
  */
 package main;
 
+import main.loadOuts.LoadOut;
 import com.jme3.bullet.BulletAppState;
 import com.jme3.bullet.collision.shapes.CapsuleCollisionShape;
 import com.jme3.bullet.control.CharacterControl;

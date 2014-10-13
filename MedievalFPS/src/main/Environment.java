@@ -4,6 +4,7 @@
  */
 package main;
 
+import main.maps.Map;
 import com.jme3.asset.AssetManager;
 import com.jme3.bullet.collision.shapes.CollisionShape;
 import com.jme3.bullet.control.RigidBodyControl;

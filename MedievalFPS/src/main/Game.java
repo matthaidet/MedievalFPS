@@ -4,6 +4,7 @@
  */
 package main;
 
+import main.maps.Map;
 import com.jme3.bullet.BulletAppState;
 import de.lessvoid.nifty.Nifty;
 import main.gui.HUD;
