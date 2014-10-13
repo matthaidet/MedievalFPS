@@ -7,7 +7,6 @@ import com.jme3.bullet.BulletAppState;
 import com.jme3.input.InputManager;
 import com.jme3.renderer.RenderManager;
 import com.jme3.scene.Spatial;
-import com.jme3.post.FilterPostProcessor;
 import com.jme3.renderer.Camera;
 import de.lessvoid.nifty.Nifty;
 import de.lessvoid.nifty.screen.Screen;
@@ -70,14 +69,6 @@ public class Main extends SimpleApplication {
 
     public void quit() {
         nifty.gotoScreen("end");
-    }
-    
-    public AssetManager getAssetManager() {
-        return assetManager;
-    }
-
-    public InputManager getInputManager() {
-        return inputManager;
     }
 
     public AudioRenderer getAudioManager() {
