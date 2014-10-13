@@ -8,19 +8,16 @@ package main;
  *
  * @author MattH
  */
-public interface LoadOut {
+public class LoadOut {
+    private float healthStat;
+    private float armorStat;
+    private float speedStat;
+    private Weapon[] weapons;
 
-    public String getName();
+    public LoadOut() {
+    }
 
-    public float getSpeed();
-
-    public float getWeight();
-
-    public float getMaxHealth();
-
-    public float getHealthRegen();
-
-    public Weapon[] getWeapons();
-
-    public String getIconPath();
+    public float getHealthStat() {
+        return healthStat;
+    }
 }

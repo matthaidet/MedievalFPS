@@ -16,13 +16,21 @@ public interface Map {
 
     public String getDecorationsFilePath();
 
-    public String getBoundriesFilePath();
+    public String getNeutralBoundariesFilePath();
+    
+    public String getTeamOneBoundariesFilePath();
+    
+    public String getTeamTwoBoundariesFilePath();
 
     public String getWaterFilePath();
 
     public String getMiniMapFilePath();
 
     public String getMapName();
+    
+    public String getMapTag();
+    
+    public String getLoadingScreenFilePath();
 
     public Vector3f[] getTeamOneSpawnPoints();
 
@@ -31,4 +39,5 @@ public interface Map {
     public Vector3f[] getNeutralSPawnPoints();
 
     public int getPlayerCapacity();
+    
 }
