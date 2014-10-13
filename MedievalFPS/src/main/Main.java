@@ -39,7 +39,7 @@ public class Main extends SimpleApplication implements ScreenController {
         currentScene = 0; //dictates which scene is loaded into
         flyCam.setMoveSpeed(30); //i think we all agree that the camera was too damn slow!
         Spatial myTerrain = assetManager.loadModel(
-                "Models/Rocks.j3o");
+                scene[currentScene]);
         rootNode.attachChild(myTerrain);
 
         NiftyJmeDisplay niftyDisplay = new NiftyJmeDisplay(assetManager,
