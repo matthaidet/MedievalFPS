@@ -8,10 +8,6 @@ import com.jme3.asset.AssetManager;
 import com.jme3.bullet.collision.shapes.CollisionShape;
 import com.jme3.bullet.control.RigidBodyControl;
 import com.jme3.bullet.util.CollisionShapeFactory;
-import com.jme3.light.AmbientLight;
-import com.jme3.light.DirectionalLight;
-import com.jme3.math.ColorRGBA;
-import com.jme3.math.Vector3f;
 import com.jme3.post.FilterPostProcessor;
 import com.jme3.scene.Node;
 import com.jme3.scene.Spatial;
@@ -21,14 +17,13 @@ import com.jme3.scene.Spatial;
  * @author MattH
  */
 public class Environment {
-    private String terrainFilePath, decorationsFilePath, waterFilePath;
+
     private Spatial sceneModel;
     private RigidBodyControl landscape;
-    private Node rootNode;
 
     public Environment(Main main) {
         AssetManager assetManager = main.getAssetManager();
-        rootNode = main.getRootNode();
+        Node rootNode = main.getRootNode();
 
         sceneModel = main.getAssetManager().loadModel("Models/Scenes/originalScene.j3o");
         CollisionShape sceneShape =
@@ -41,8 +36,6 @@ public class Environment {
         Spatial decorations = assetManager.loadModel(
                 "Models/Scenes/noCollisionScene.j3o");
         rootNode.attachChild(decorations);
-        rootNode.attachChild(sceneModel);
-        this.setUpLight();
     }
 
     private void setUpLight() {
