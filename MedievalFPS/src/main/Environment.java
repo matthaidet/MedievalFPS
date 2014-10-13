@@ -21,25 +21,23 @@ import com.jme3.scene.Spatial;
  * @author MattH
  */
 public class Environment {
-    private String terrainFilePath, decorationsFilePath, waterFilePath;
     private Spatial sceneModel;
     private RigidBodyControl landscape;
     private Node rootNode;
 
-    public Environment(Main main) {
+    public Environment(Main main, Map map) {
         AssetManager assetManager = main.getAssetManager();
         rootNode = main.getRootNode();
 
-        sceneModel = main.getAssetManager().loadModel("Models/Scenes/originalScene.j3o");
+        sceneModel = main.getAssetManager().loadModel(map.getTerrainFilePath());
         CollisionShape sceneShape =
                 CollisionShapeFactory.createMeshShape((Node) sceneModel);
         landscape = new RigidBodyControl(sceneShape, 0);
         sceneModel.addControl(landscape);
         FilterPostProcessor water;
-        water = assetManager.loadFilter("Models/waterFilter.j3f");
+        water = assetManager.loadFilter(map.getWaterFilePath());
         main.getViewPort().addProcessor(water);
-        Spatial decorations = assetManager.loadModel(
-                "Models/Scenes/noCollisionScene.j3o");
+        Spatial decorations = assetManager.loadModel(map.getDecorationsFilePath());
         rootNode.attachChild(decorations);
         rootNode.attachChild(sceneModel);
         //this.setUpLight();
