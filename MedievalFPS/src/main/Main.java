@@ -21,6 +21,10 @@ import com.jme3.water.SimpleWaterProcessor;
 public class Main extends SimpleApplication implements ScreenController {
 
     private Nifty nifty;
+    int numScenes = 5; //declares number of spaces in Scene array
+    private String[] scene = new String[numScenes];
+    int currentScene; //dictates which scene is loaded into
+    
     public static void main(String[] args) {
         Main app = new Main();
         app.start();
@@ -30,9 +34,11 @@ public class Main extends SimpleApplication implements ScreenController {
 
     @Override
     public void simpleInitApp() {
+        populateSceneArray(); //fills scene array with file paths
+        currentScene = 0; //dictates which scene is loaded into
         flyCam.setMoveSpeed(30); //i think we all agree that the camera was too damn slow!
         Spatial myTerrain = assetManager.loadModel(
-                "Models/Scenes/scene1.j3o");
+                scene[currentScene]);
         rootNode.attachChild(myTerrain);
 
         NiftyJmeDisplay niftyDisplay = new NiftyJmeDisplay(assetManager,
@@ -79,5 +85,10 @@ public class Main extends SimpleApplication implements ScreenController {
 
     public void quit() {
         nifty.gotoScreen("end");
+    }
+    
+    public void populateSceneArray() {
+        scene[0] = "Models/Scenes/scene1.j3o";
+        scene[1] = "Models/Scenes/scene2.j3o";
     }
 }
