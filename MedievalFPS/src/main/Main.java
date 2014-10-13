@@ -35,6 +35,7 @@ public class Main extends SimpleApplication implements ScreenController {
     @Override
     public void simpleInitApp() {
         populateSceneArray(); //fills scene array with file paths
+        initializeWorld(); //initializes water processor (and future effects)
         currentScene = 0; //dictates which scene is loaded into
         flyCam.setMoveSpeed(30); //i think we all agree that the camera was too damn slow!
         Spatial myTerrain = assetManager.loadModel(
@@ -53,9 +54,7 @@ public class Main extends SimpleApplication implements ScreenController {
        
         
          
-        FilterPostProcessor water;
-        water = assetManager.loadFilter("Models/waterFilter.j3f");
-        viewPort.addProcessor(water);
+       
         
     }
     @Override
@@ -89,5 +88,11 @@ public class Main extends SimpleApplication implements ScreenController {
     public void populateSceneArray() {
         scene[0] = "Models/Scenes/scene1.j3o";
         scene[1] = "Models/Scenes/scene2.j3o";
+    }
+    
+    public void initializeWorld() {
+        FilterPostProcessor water;
+        water = assetManager.loadFilter("Models/waterFilter.j3f");
+        viewPort.addProcessor(water);
     }
 }
