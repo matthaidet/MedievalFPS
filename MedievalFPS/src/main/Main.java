@@ -98,12 +98,6 @@ public class Main extends SimpleApplication {
        FilterPostProcessor water;
        water = assetManager.loadFilter("Models/waterFilter.j3f");
        viewPort.addProcessor(water);
-       Spatial myTerrain = assetManager.loadModel(
-                "Models/Scenes/scene1.j3o");
-       rootNode.attachChild(myTerrain);
-       Spatial noCollisions = assetManager.loadModel(
-               "Models/Scenes/noCollisionScene.j3o");
-       rootNode.attachChild(noCollisions);
     }
 
     public AssetManager getAssetManager() {

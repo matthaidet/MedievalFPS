@@ -20,7 +20,7 @@ public class Environment {
     private RigidBodyControl landscape;
 
     public Environment(Main main) {
-        sceneModel = main.getAssetManager().loadModel("Models/Scenes/scene1.j3o");
+        sceneModel = main.getAssetManager().loadModel("Models/Scenes/originalScene.j3o");
         CollisionShape sceneShape =
                 CollisionShapeFactory.createMeshShape((Node) sceneModel);
         landscape = new RigidBodyControl(sceneShape, 0);
