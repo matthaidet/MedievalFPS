@@ -15,27 +15,29 @@ public class DesertIsland implements Map {
     
     Vector3f[] teamOneSpawnPoints;
     Vector3f[] teamTwoSpawnPoints;
-    Vector3f[] neutralSpawnPoints;
-    String terrainFilePath;
-    String loadingScreenFilePath;
-    String decorationFilePath;
-    String boundariesFilePath;
-    String waterFilterFilePath;
-    String miniMapFilePath;
-    String mapName;
-    String mapTag;
-    int playerCapacity;
+    Vector3f[] neutralSpawnPoint;
+    String terrainFilePath = "Maps/desertIsland/desertIslandTerrain.j30";
+    String loadingScreenFilePath = "";
+    String decorationFilePath = "Maps/desertIsland/desertIslandDecorations.j303";
+    String boundariesFilePath = "Maps/desertIsland/desertIslandBoundaries.j3o";
+    String teamOneBoundariesFilePath = "";
+    String teamTwoBoundariesFilePath = "";
+    String waterFilterFilePath = "Maps/desertIsland/desertIslandWaterFilter.j3f";
+    String miniMapFilePath = "";
+    String mapName = "desertIsland";
+    String mapTag = "Desert Island";
+    int playerCapacity = 10;
     
     public String getTerrainFilePath() {
         return terrainFilePath;
     }
 
+    public String getLoadingScreenFilePath() {
+        return loadingScreenFilePath;
+    }
+    
     public String getDecorationsFilePath() {
         return decorationFilePath;
-    }
-
-    public String getBoundriesFilePath() {
-        return boundariesFilePath;
     }
 
     public String getWaterFilterFilePath() {
@@ -68,5 +70,21 @@ public class DesertIsland implements Map {
     
     public String getMapTag() {
         return mapTag;
+    }
+
+    public String getWaterFilePath() {
+        return waterFilterFilePath;
+    }
+
+    public String getNeutralBoundariesFilePath() {
+        return boundariesFilePath;
+    }
+
+    public String getTeamOneBoundariesFilePath() {
+        return teamOneBoundariesFilePath;
+    }
+
+    public String getTeamTwoBoundariesFilePath() {
+        return teamTwoBoundariesFilePath;
     }
 }
