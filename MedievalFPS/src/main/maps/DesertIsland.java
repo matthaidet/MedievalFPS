@@ -12,44 +12,61 @@ import main.Map;
  * @author MattH
  */
 public class DesertIsland implements Map {
-
+    
+    Vector3f[] teamOneSpawnPoints;
+    Vector3f[] teamTwoSpawnPoints;
+    Vector3f[] neutralSpawnPoints;
+    String terrainFilePath;
+    String loadingScreenFilePath;
+    String decorationFilePath;
+    String boundariesFilePath;
+    String waterFilterFilePath;
+    String miniMapFilePath;
+    String mapName;
+    String mapTag;
+    int playerCapacity;
+    
     public String getTerrainFilePath() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return terrainFilePath;
     }
 
     public String getDecorationsFilePath() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return decorationFilePath;
     }
 
     public String getBoundriesFilePath() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return boundariesFilePath;
     }
 
-    public String getWaterFilePath() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String getWaterFilterFilePath() {
+        return waterFilterFilePath;
     }
 
     public String getMiniMapFilePath() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return miniMapFilePath;
     }
 
     public Vector3f[] getTeamOneSpawnPoints() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return teamOneSpawnPoints;
     }
 
     public Vector3f[] getTeamTwoSpawnPoints() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return teamTwoSpawnPoints;
     }
 
     public Vector3f[] getNeutralSPawnPoints() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return neutralSpawnPoints;
     }
 
     public int getPlayerCapacity() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return playerCapacity;
     }
 
     public String getMapName() {
-        return "Desert-Island";
+        return mapName;
+    }
+    
+    public String getMapTag() {
+        return mapTag;
     }
 }
