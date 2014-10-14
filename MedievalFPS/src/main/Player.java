@@ -7,6 +7,8 @@ package main;
 import main.loadOuts.LoadOut;
 import com.jme3.bullet.collision.shapes.CapsuleCollisionShape;
 import com.jme3.bullet.control.CharacterControl;
+import com.jme3.math.Matrix3f;
+import com.jme3.math.Quaternion;
 import com.jme3.math.Vector3f;
 import com.jme3.renderer.Camera;
 
@@ -61,6 +63,7 @@ public class Player extends CharacterControl {
 
     public void update(Main main, Controls controls) {
         Camera cam = main.getCam();
+
         camDir.set(cam.getDirection()).multLocal(speed);
         camLeft.set(cam.getLeft()).multLocal(speed / 2);
         walkDirection.set(0, 0, 0);
@@ -100,16 +103,24 @@ public class Player extends CharacterControl {
                 walkDirection.addLocal(camDir.negate().setY(-.3f));
             }
         }
-        if (cam.getDirection().getY() >= 0.5) {
+        if (cam.getDirection().getY() >= 0.5f) { //Player looking Limitations
+            //TODO: fix bug with look while goin up hills
+            //I noticed that the up X is always bigger than up Y when this occurs
             Vector3f newCamDirection = cam.getDirection();
-            newCamDirection.setY(0.4999f);
+            newCamDirection.setY(newCamDirection.getY() - (newCamDirection.getY() - 0.5f));
             cam.lookAtDirection(newCamDirection, cam.getUp());
         }
-        if (cam.getDirection().getY() <= -0.5) {
+        if (cam.getDirection().getY() <= -0.6f) {
             Vector3f newCamDirection = cam.getDirection();
-            newCamDirection.setY(newCamDirection.getY() - newCamDirection.getY() - 0.5f);
+            newCamDirection.setY(newCamDirection.getY() - (newCamDirection.getY() + 0.6f));
             cam.lookAtDirection(newCamDirection, cam.getUp());
         }
+
+        //Keeps the roll of the camera steady to prevent glitches
+        float[] angles = {0, 0, 0};
+        cam.getRotation().toAngles(angles);
+        System.out.println(cam.getRotation().fromAngles(angles[0], angles[1], 0));
+
 
         this.setWalkDirection(walkDirection);
         cam.setLocation(this.getPhysicsLocation());
