@@ -21,10 +21,6 @@ public class Controls implements ActionListener {
         this.player = player;
     }
 
-    /**
-     * We over-write some navigational key mappings here, so we can add
-     * physics-controlled walking and jumping:
-     */
     public void setUpKeys(Main main) {
         main.getInputManager().addMapping("Left", new KeyTrigger(KeyInput.KEY_A));
         main.getInputManager().addMapping("Right", new KeyTrigger(KeyInput.KEY_D));
@@ -38,10 +34,7 @@ public class Controls implements ActionListener {
         main.getInputManager().addListener(this, "Jump");
     }
 
-    /**
-     * These are our custom actions triggered by key presses. We do not walk
-     * yet, we just keep track of the direction the user pressed.
-     */
+
     public void onAction(String binding, boolean isPressed, float tpf) {
 
         if (binding.equals("Left")) {

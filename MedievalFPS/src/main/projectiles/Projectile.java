@@ -4,6 +4,8 @@
  */
 package main.projectiles;
 
+import com.jme3.asset.AssetManager;
+import java.util.Vector;
 import main.ModelObject;
 
 /**
@@ -14,8 +16,8 @@ public class Projectile extends ModelObject {
     private String filePath;
     private float mass;
 
-    public Projectile(String filePath, float mass) {
-        super(filePath);
+    public Projectile(String filePath, AssetManager a, Vector position, float mass) {
+        super(filePath, position, a);
         this.mass = mass;
         this.filePath = filePath;
     }
