@@ -105,11 +105,17 @@ public class Player extends CharacterControl {
             newCamDirection.setY(0.4999f);
             cam.lookAtDirection(newCamDirection, cam.getUp());
         }
-        if (cam.getDirection().getY() <= -0.5) {
+        if (cam.getDirection().getY() <= -0.6) {
             Vector3f newCamDirection = cam.getDirection();
-            newCamDirection.setY(newCamDirection.getY() - newCamDirection.getY() - 0.5f);
+            newCamDirection.setY(newCamDirection.getY() - newCamDirection.getY() - 0.6f);
             cam.lookAtDirection(newCamDirection, cam.getUp());
         }
+
+        //prevent camera glitch by stabalizing Roll
+        float[] angles = {0, 0, 0};
+        cam.getRotation().toAngles(angles);
+        cam.getRotation().fromAngles(angles[0], angles[1], 0);
+
 
         this.setWalkDirection(walkDirection);
         cam.setLocation(this.getPhysicsLocation());
