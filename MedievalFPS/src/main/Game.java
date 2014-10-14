@@ -13,11 +13,10 @@ import de.lessvoid.nifty.Nifty;
  */
 public class Game {
 
-    private Nifty nifty;
-    private int elapsedTime;
-
     public Game(Player[] players, Map map) {
     }
 
+    private void load() {
+    }
     
 }

@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package main;
+package main.gui;
 
 import com.jme3.app.SimpleApplication;
 import de.lessvoid.nifty.Nifty;
