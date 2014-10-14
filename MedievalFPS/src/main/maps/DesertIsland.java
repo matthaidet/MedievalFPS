@@ -28,6 +28,10 @@ public class DesertIsland implements Map {
     String mapTag = "Desert Island";
     int playerCapacity = 10;
     
+    void desertIsland() {
+        
+        
+    }
     public String getTerrainFilePath() {
         return terrainFilePath;
     }
