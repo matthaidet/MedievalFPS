@@ -5,8 +5,9 @@
 package main.projectiles;
 
 import com.jme3.asset.AssetManager;
-import java.util.Vector;
+import com.jme3.math.Vector3f;
 import main.ModelObject;
+import main.Player;
 
 /**
  *
@@ -15,10 +16,12 @@ import main.ModelObject;
 public class Projectile extends ModelObject {
     private String filePath;
     private float mass;
+    private Player owner;
 
-    public Projectile(String filePath, AssetManager a, Vector position, float mass) {
+    public Projectile(String filePath, AssetManager a, Vector3f position, float mass, Player p) {
         super(filePath, position, a);
         this.mass = mass;
         this.filePath = filePath;
+        this.owner = p;
     }
 }
