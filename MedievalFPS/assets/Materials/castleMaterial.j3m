@@ -1,0 +1,10 @@
+Material My Material : Common/MatDefs/Misc/ColoredTextured.j3md {
+     MaterialParameters {
+        ColorMap : Textures/rock.jpg
+     }
+    AdditionalRenderState {
+      ColorWrite On
+      DepthTest Off
+      PointSprite Off
+    }
+}
