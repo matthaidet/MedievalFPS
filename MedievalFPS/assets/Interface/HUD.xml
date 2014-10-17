@@ -5,15 +5,23 @@
   <useControls filename="nifty-default-controls.xml" />
     
     <screen id="start" controlller="jme3test.niftygui.TestNiftyGui">
+        <layer id="crossHair" backgroundColor="#0000" childLayout="center">
         
-        <layer id="background" backgroundColor="#99FFCC" childLayout="center">
+          <image filename = "Interface/crosshair.png" width="25%" height="30%">
+          </image>
+          
+    </layer>
+    </screen>
+    
+  <screen id="game" controller="jme3test.niftygui.TestNiftyGui">
+      <layer id="background" backgroundColor="#99FFCC" childLayout="center">
             
         </layer>
         
         <layer id="menu" backgroundColor="#0000" childLayout="center">
             <image filename="Interface/swordClipArt.png"></image>
             
-                         <panel id="backing" width = "50%" height="80%"  childLayout="vertical">
+            <panel id="backing" width = "50%" height="80%"  childLayout="vertical">
 
                 <panel id="playButton" backgroundColor="#88f8" width="*" height="33%" childLayout="center">
 
@@ -32,16 +40,13 @@
                 <panel id="quitButton" backgroundColor="#88f8" width="*" height="*" childLayout="center">
 
                     <control name="button" label="Quit" id="quitButton" align="center" valign="center"> 
-                     </control>
+                    </control>
 
                 </panel>
 
             </panel>
             
         </layer>
-    
-  <screen id="game" controller="jme3test.niftygui.TestNiftyGui">
-      
     <layer id="crossHair" backgroundColor="#0000" childLayout="center">
         
           <image filename = "Interface/crosshair.png" width="25%" height="30%">
