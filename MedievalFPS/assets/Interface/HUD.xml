@@ -1,11 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <nifty>
-  <screen id="start" controller="jme3test.niftygui.TestNiftyGui">
-      <layer id="crossHair" backgroundColor="#0000" childLayout="center">
+    
+  <useStyles filename="nifty-default-styles.xml" />
+  <useControls filename="nifty-default-controls.xml" />
+    
+    <screen id="start" controlller="jme3test.niftygui.TestNiftyGui">
+        
+        <layer id="background" backgroundColor="#99FFCC" childLayout="center">
+            
+        </layer>
+        
+        <layer id="menu" backgroundColor="#0000" childLayout="center">
+            <image filename="Interface/swordClipArt.png"></image>
+            
+                         <panel id="backing" width = "50%" height="80%"  childLayout="vertical">
+
+                <panel id="playButton" backgroundColor="#88f8" width="*" height="33%" childLayout="center">
+
+                    <control name="button" label="Play" id="playButton" align="center" valign="center"> 
+                    </control>
+
+                </panel>
+
+                <panel id="optionButton" backgroundColor="#44f8" width="*" height="33%" childLayout="center">
+
+                    <control name="button" label="Options" id="optButton" align="center" valign="center"> 
+                    </control>
+
+                </panel>
+
+                <panel id="quitButton" backgroundColor="#88f8" width="*" height="*" childLayout="center">
+
+                    <control name="button" label="Quit" id="quitButton" align="center" valign="center"> 
+                     </control>
+
+                </panel>
+
+            </panel>
+            
+        </layer>
+    
+  <screen id="game" controller="jme3test.niftygui.TestNiftyGui">
+      
+    <layer id="crossHair" backgroundColor="#0000" childLayout="center">
+        
           <image filename = "Interface/crosshair.png" width="25%" height="30%">
           </image>
+          
     </layer>
+    
+    <layer id="GUI" background="#000f" childLayout="center">
+
+      <panel id="miniMap" width="20%" height="30%" align="right" childLayout="center" 
+      
+      backgroundColor="#00f8">
+          <text text="MiniMap" font="Interface/Fonts/Default.fnt" width="100%" height="100%" />
+          
+      </panel>
+
+   
+
+    </layer>
+    
   </screen>
+  
   <screen id="end">
   </screen>
 </nifty>
