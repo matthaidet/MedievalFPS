@@ -68,4 +68,8 @@ public class Main extends SimpleApplication {
     public Camera getCam() {
         return cam;
     }
+    
+    int arrowDropRateCalculator() { //just here for temporary testing, dont be mad
+        return 3;
+    }
 }
