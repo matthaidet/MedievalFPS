@@ -50,6 +50,7 @@ public class Controls implements ActionListener {
                 player.jump();
             }
         }
+        
     }
 
     public boolean getIsLeft() {

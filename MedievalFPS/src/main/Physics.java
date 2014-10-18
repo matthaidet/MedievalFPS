@@ -10,30 +10,25 @@ package main;
  */
 public class Physics {
     static Double gravity;
-    static Double gravityMilli;
     
-    public static double updateDropRate(double currentDropRate) {
+    public static double updateY(double currentY, double timeElapsed) {
+        gravity = 32.0;
         //double gravityMilli = gravity / 1000;
         //double newDropRate = currentDropRate + gravityMilli;
-        double newDropRate =  -0.07*((currentDropRate - 2) * (currentDropRate -2)) + 0.3;
+        double newDropRate =  1/gravity* (timeElapsed * timeElapsed);
         return newDropRate;
     }
     
-    public static double updateSpeed(double currentSpeed) {
+    public static double updateSpeed(double currentSpeed, double timeElapsed) {
         double newSpeed;
-        newSpeed = -0.1*(currentSpeed * currentSpeed);
+        newSpeed = -0.1*(timeElapsed * timeElapsed);
         return newSpeed;
     }
     public static void setGravity(double newGravity) {
         gravity = newGravity;
-        gravityMilli = gravity/1000;
     }
     
     public static double getGravity() {
         return gravity;
-    }
-    
-    public static double getGravityMilli() {
-        return gravityMilli;
     }
 }
