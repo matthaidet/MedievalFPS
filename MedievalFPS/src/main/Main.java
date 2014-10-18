@@ -8,7 +8,6 @@ import com.jme3.renderer.Camera;
 import de.lessvoid.nifty.Nifty;
 import de.lessvoid.nifty.screen.Screen;
 import main.maps.DesertIsland;
-
 /**
  * test
  * @author normenhansen
@@ -19,7 +18,7 @@ public class Main extends SimpleApplication {
     private Player player;
     private Environment environment;
     private Game game;
- 
+
     public static void main(String[] args) {
         Main app = new Main();
         app.start();
@@ -28,8 +27,9 @@ public class Main extends SimpleApplication {
     @Override
     public void simpleInitApp() {
         player = new Player(new Profile());
-        game = new Game(this, new DesertIsland(), player, nifty);
+        game = new Game(this, new DesertIsland(), player, nifty); 
     }
+ 
 
     @Override
     public void simpleUpdate(float tpf) {

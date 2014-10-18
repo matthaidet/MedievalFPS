@@ -9,20 +9,31 @@ package main;
  * @author Leon
  */
 public class Physics {
-    static float dropRate;
-    static float dropBooster;
-    static float gravity;
+    static Double gravity;
+    static Double gravityMilli;
     
-    static float updateDropRate(float currentDropRate) {
-        return 3;
+    public static double updateDropRate(double currentDropRate) {
+        //double gravityMilli = gravity / 1000;
+        //double newDropRate = currentDropRate + gravityMilli;
+        double newDropRate =  -0.07*((currentDropRate - 2) * (currentDropRate -2)) + 0.3;
+        return newDropRate;
     }
     
-    static float addDropBooster(float currentDropRate, float dropBooster) {
-        return 3;
+    public static double updateSpeed(double currentSpeed) {
+        double newSpeed;
+        newSpeed = -0.1*(currentSpeed * currentSpeed);
+        return newSpeed;
+    }
+    public static void setGravity(double newGravity) {
+        gravity = newGravity;
+        gravityMilli = gravity/1000;
     }
     
-    static public void setDropRate(float newDropRate) {
-        dropRate = newDropRate;
+    public static double getGravity() {
+        return gravity;
     }
     
+    public static double getGravityMilli() {
+        return gravityMilli;
+    }
 }
