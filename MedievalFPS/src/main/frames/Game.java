@@ -5,10 +5,11 @@
 package main.frames;
 
 import de.lessvoid.nifty.Nifty;
+import de.lessvoid.nifty.screen.Screen;
 import main.Main;
 import main.Playable;
 import main.Player;
-import main.gui.GUI;
+import main.GUI;
 import main.maps.DesertIsland;
 import main.maps.Map;
 
@@ -49,4 +50,9 @@ public String getName() {
     public void update() {
         playable.update();
     }
+
+    public void action(int i) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

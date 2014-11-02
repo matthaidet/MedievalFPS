@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package main.gui;
+package main;
 
 import com.jme3.niftygui.NiftyJmeDisplay;
 import de.lessvoid.nifty.Nifty;
@@ -18,6 +18,7 @@ public class GUI implements ScreenController {
 
     private String xmlFilePath;
     private String name;
+    private NiftyJmeDisplay niftyDisplay;
 
     public GUI(String xmlPath, String n) {
         xmlFilePath = xmlPath;
@@ -29,7 +30,7 @@ public class GUI implements ScreenController {
     }
 
     public void display(Main main, Nifty nifty) {
-        NiftyJmeDisplay niftyDisplay = new NiftyJmeDisplay(main.getAssetManager(),
+        niftyDisplay = new NiftyJmeDisplay(main.getAssetManager(),
                 main.getInputManager(),
                 main.getAudioManager(),
                 main.getGuiViewPort());
@@ -40,6 +41,10 @@ public class GUI implements ScreenController {
         main.getGuiViewPort().addProcessor(niftyDisplay);
     }
 
+    public NiftyJmeDisplay getNiftyDisplay() {
+        return niftyDisplay;
+    }
+
     public void hide() {
     }
 
@@ -48,14 +53,18 @@ public class GUI implements ScreenController {
     }
 
     public void bind(Nifty nifty, Screen screen) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     public void onStartScreen() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     public void onEndScreen() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+    }
+
+    public void triggerAction(int i) {
+        FrameHandler.getCurrentFrame().action(0);
     }
 }
