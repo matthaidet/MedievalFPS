@@ -9,7 +9,7 @@ import com.jme3.math.Quaternion;
 import com.jme3.math.Vector3f;
 import com.jme3.scene.Spatial;
 import main.ModelObject;
-import main.Physics;
+import main.utils.Physics;
 import main.Player;
 import main.projectiles.Projectile;
 
