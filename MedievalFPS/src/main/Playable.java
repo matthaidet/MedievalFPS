@@ -49,7 +49,7 @@ public class Playable {
         bulletAppState.getPhysicsSpace().add(environment.getLandscape());
     }
 
-    public void gameLoop() {
+    public void update() {
         player.update(main, controls);
     }
     

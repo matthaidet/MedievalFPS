@@ -4,25 +4,41 @@
  */
 package main.frames;
 
+import de.lessvoid.nifty.Nifty;
+import main.Main;
+import main.Playable;
+import main.Player;
+import main.maps.DesertIsland;
+
 /**
  *
  * @author MattH
  */
 public class Game implements Frame {
+    private Playable playable;
+    private Nifty nifty;
+    private Player player;
+    private Main main;
 
-    public String getName() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Game(Player p, Main m) {
+        player = p;
+        main = m;
+        this.init();
+    }
+
+public String getName() {
+    return "Game";
     }
 
     public void init() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        playable = new Playable(main, new DesertIsland(), player, nifty);
     }
 
     public void display() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       
     }
 
     public void update() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        playable.update();
     }
 }

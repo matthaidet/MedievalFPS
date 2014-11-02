@@ -12,12 +12,22 @@ import main.frames.Frame;
  */
 public class FrameHandler {
 
-    private Frame currentFrame;
-    private Frame[] frames;
+    private static Frame currentFrame;
+    private static Frame[] frames;
 
-    public void switchTo(Frame frame) {
+    public static void switchTo(Frame frame) {
+        currentFrame = frame;
     }
 
-    public void update() {
+    public static void updateCurrentFrame() {
+        currentFrame.update();
+    }
+
+    public static void displayCurrentFrame() {
+        currentFrame.display();
+    }
+
+    public static Frame getCurrentFrame() {
+        return currentFrame;
     }
 }

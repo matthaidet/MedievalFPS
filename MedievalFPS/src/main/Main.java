@@ -7,17 +7,14 @@ import com.jme3.renderer.RenderManager;
 import com.jme3.renderer.Camera;
 import de.lessvoid.nifty.Nifty;
 import de.lessvoid.nifty.screen.Screen;
-import main.maps.DesertIsland;
+import main.frames.Game;
 /**
  * test
  * @author normenhansen
  */
 public class Main extends SimpleApplication {
     public BulletAppState bulletAppState;
-    private Nifty nifty;
     private Player player;
-    private Environment environment;
-    private Playable game;
 
     public static void main(String[] args) {
         Main app = new Main();
@@ -27,13 +24,14 @@ public class Main extends SimpleApplication {
     @Override
     public void simpleInitApp() {
         player = new Player(new Profile());
-        game = new Playable(this, new DesertIsland(), player, nifty); 
+        FrameHandler.switchTo(new Game(player, this));
+        FrameHandler.displayCurrentFrame();
     }
  
 
     @Override
     public void simpleUpdate(float tpf) {
-        game.gameLoop();
+        FrameHandler.updateCurrentFrame();
     }
 
     @Override
@@ -54,7 +52,7 @@ public class Main extends SimpleApplication {
     }
 
     public void quit() {
-        nifty.gotoScreen("end");
+        
     }
 
     public AudioRenderer getAudioManager() {
