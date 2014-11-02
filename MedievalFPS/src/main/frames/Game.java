@@ -8,7 +8,9 @@ import de.lessvoid.nifty.Nifty;
 import main.Main;
 import main.Playable;
 import main.Player;
+import main.gui.GUI;
 import main.maps.DesertIsland;
+import main.maps.Map;
 
 /**
  *
@@ -19,10 +21,13 @@ public class Game implements Frame {
     private Nifty nifty;
     private Player player;
     private Main main;
+    private GUI hud;
+    private Map map;
 
-    public Game(Player p, Main m) {
+    public Game(Player p, Main m, Map mp) {
         player = p;
         main = m;
+        map = mp;
         this.init();
     }
 
@@ -31,11 +36,14 @@ public String getName() {
     }
 
     public void init() {
-        playable = new Playable(main, new DesertIsland(), player, nifty);
+        playable = new Playable(main, map, player, nifty);
+        hud = new GUI("Interface/HUD.xml", "HUD");
+        playable.load(map);
     }
 
     public void display() {
-       
+        hud.display(main, nifty);
+        playable.init();
     }
 
     public void update() {

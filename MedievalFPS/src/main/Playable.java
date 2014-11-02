@@ -7,7 +7,7 @@ package main;
 import main.maps.Map;
 import com.jme3.bullet.BulletAppState;
 import de.lessvoid.nifty.Nifty;
-import main.gui.HUD;
+import main.gui.GUI;
 
 /**
  *
@@ -19,7 +19,7 @@ public class Playable {
     private Environment environment;
     private Player player;
     private Main main;
-    private HUD hud;
+    private GUI hud;
     private BulletAppState bulletAppState;
 
 
@@ -28,22 +28,18 @@ public class Playable {
         this.player = player;
         this.main = main;
         this.bulletAppState = main.getBulletAppState();
-        load(map);
     }
 
-    private void load(Map map) {
+    public void load(Map map) {
         environment = new Environment(main, map);
         player.init(main, environment);
         controls = new Controls(player);
         controls.setUpKeys(main);
         bulletAppState = new BulletAppState();
-        init();
     }
 
-    private void init() {
+    public void init() {
         main.getStateManager().attach(bulletAppState);
-        hud = new HUD();
-        hud.displayHUD(nifty, main);
         bulletAppState.getPhysicsSpace().add(player);
         main.getRootNode().attachChild(environment.getSceneModel());
         bulletAppState.getPhysicsSpace().add(environment.getLandscape());

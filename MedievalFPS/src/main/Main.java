@@ -8,6 +8,7 @@ import com.jme3.renderer.Camera;
 import de.lessvoid.nifty.Nifty;
 import de.lessvoid.nifty.screen.Screen;
 import main.frames.Game;
+import main.maps.DesertIsland;
 /**
  * test
  * @author normenhansen
@@ -24,7 +25,7 @@ public class Main extends SimpleApplication {
     @Override
     public void simpleInitApp() {
         player = new Player(new Profile());
-        FrameHandler.switchTo(new Game(player, this));
+        FrameHandler.switchTo(new Game(player, this, new DesertIsland()));
         FrameHandler.displayCurrentFrame();
     }
  
