@@ -13,7 +13,7 @@ import main.gui.HUD;
  *
  * @author MattH
  */
-public class Game {
+public class Playable {
     private Nifty nifty;
     private Controls controls;
     private Environment environment;
@@ -23,7 +23,7 @@ public class Game {
     private BulletAppState bulletAppState;
 
 
-    public Game(Main main, Map map, Player player, Nifty nifty) {
+    public Playable(Main main, Map map, Player player, Nifty nifty) {
         this.nifty = nifty;
         this.player = player;
         this.main = main;

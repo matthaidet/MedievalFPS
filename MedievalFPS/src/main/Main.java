@@ -17,7 +17,7 @@ public class Main extends SimpleApplication {
     private Nifty nifty;
     private Player player;
     private Environment environment;
-    private Game game;
+    private Playable game;
 
     public static void main(String[] args) {
         Main app = new Main();
@@ -27,7 +27,7 @@ public class Main extends SimpleApplication {
     @Override
     public void simpleInitApp() {
         player = new Player(new Profile());
-        game = new Game(this, new DesertIsland(), player, nifty); 
+        game = new Playable(this, new DesertIsland(), player, nifty); 
     }
  
 
