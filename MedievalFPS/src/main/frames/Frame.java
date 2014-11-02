@@ -8,5 +8,13 @@ package main.frames;
  *
  * @author MattH
  */
-public class Frame {
+public interface Frame {
+
+    public String getName();
+
+    public void init();
+
+    public void display();
+
+    public void update();
 }
