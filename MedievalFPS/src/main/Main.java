@@ -26,7 +26,7 @@ public class Main extends SimpleApplication {
     @Override
     public void simpleInitApp() {
         player = new Player(new Profile());
-//        FrameHandler.switchTo(new MainMenu(this, new Profile()));
+        FrameHandler.switchTo(new MainMenu(this, new Profile()));
         FrameHandler.switchTo(new Game(player, this, new DesertIsland()));
         FrameHandler.displayCurrentFrame();
     }

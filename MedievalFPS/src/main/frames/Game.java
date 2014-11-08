@@ -43,6 +43,7 @@ public String getName() {
     }
 
     public void display() {
+        main.getFlyByCamera().setEnabled(true);
         hud.display(main, nifty);
         playable.init();
     }
@@ -55,4 +56,7 @@ public String getName() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    public void dispose() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

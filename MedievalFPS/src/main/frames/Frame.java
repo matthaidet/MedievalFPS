@@ -4,8 +4,6 @@
  */
 package main.frames;
 
-import de.lessvoid.nifty.screen.ScreenController;
-
 /**
  *
  * @author MattH
@@ -19,6 +17,8 @@ public interface Frame{
     public void display();
 
     public void update();
+
+    public void dispose();
 
     public void action(int i);
 }
