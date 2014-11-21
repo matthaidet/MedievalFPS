@@ -9,6 +9,7 @@ import com.jme3.bullet.collision.shapes.CapsuleCollisionShape;
 import com.jme3.bullet.control.CharacterControl;
 import com.jme3.math.Vector3f;
 import com.jme3.renderer.Camera;
+import main.weapons.Weapon;
 
 /**
  *
@@ -23,6 +24,7 @@ public class Player extends CharacterControl {
     private int deaths;
     private boolean isLiving;
     private LoadOut loadOut;
+    private Weapon currentWeapon;
     private String name;
     private int remainingRespawnTime;
     private float speed;
@@ -57,6 +59,18 @@ public class Player extends CharacterControl {
         this.setFallSpeed(30);
         this.setGravity(30);
         this.setPhysicsLocation(new Vector3f(-50, 100, 0));
+    }
+
+    public void attack() {
+        this.getCurrentWeapon().shoot();
+    }
+
+    public Weapon getCurrentWeapon() {
+        return currentWeapon;
+    }
+
+    public void setCurrentWeapon(int i) {
+        currentWeapon = this.loadOut.getWeapon(i);
     }
 
     public void update(Main main, Controls controls) {

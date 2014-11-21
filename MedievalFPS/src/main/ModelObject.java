@@ -32,7 +32,6 @@ private String filePath;
     private boolean rotationSet;
     private Spatial modelSpatial;
 
-
     public ModelObject(String filePath, Vector3f p, AssetManager a) {
         sizeSet = false; //excludes size and rotation if they are not specified
         rotationSet = false;
@@ -41,7 +40,7 @@ private String filePath;
         assetManager = a;
     }
     
-    public void drawModel() {
+    public void draw() {
         modelSpatial = assetManager.loadModel(filePath); //create model with filepath
         if(rotationSet == true) { //only set rotation if has been specified
             modelSpatial.setLocalRotation(rotation);

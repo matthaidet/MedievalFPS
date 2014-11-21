@@ -22,5 +22,7 @@ public interface LoadOut {
 
     public Weapon[] getWeapons();
 
+    public Weapon getWeapon(int i);
+
     public String getIconPath();
 }

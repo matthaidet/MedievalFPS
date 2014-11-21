@@ -4,6 +4,8 @@
  */
 package main.weapons;
 
+import main.projectiles.Projectile;
+
 /**
  *
  * @author MattH
@@ -14,7 +16,13 @@ public interface Weapon {
 
     public float getBaseDamage();
 
+    public Projectile getAmoType();
+
+    public void getRange();
+
     public String getModelPath();
 
     public String getIconPath();
+
+    public void shoot();
 }
