@@ -4,11 +4,11 @@
  */
 package main;
 
-import main.loadOuts.LoadOut;
 import com.jme3.bullet.collision.shapes.CapsuleCollisionShape;
 import com.jme3.bullet.control.CharacterControl;
 import com.jme3.math.Vector3f;
 import com.jme3.renderer.Camera;
+import main.weapons.BasicBow;
 import main.weapons.Weapon;
 
 /**
@@ -27,7 +27,7 @@ public class Player extends CharacterControl {
     private Weapon currentWeapon;
     private String name;
     private int remainingRespawnTime;
-    private float speed;
+    private float currentSpeed, maxSpeed;
     private Vector3f position;
     private Vector3f camDir = new Vector3f();
     private Vector3f camLeft = new Vector3f();
@@ -39,50 +39,40 @@ public class Player extends CharacterControl {
         this.stepHeight = 0.05f;
         name = profile.getName();
         this.remainingRespawnTime = 0;
-        this.speed = .5f;
+        this.maxSpeed = .5f;
         remainingRespawnTime = 0;
+        currentWeapon = new BasicBow();
     }
 
     public void spawn(Vector3f p, LoadOut loadOut) {
         position = p;
         maxHealth = loadOut.getMaxHealth();
-        speed = loadOut.getSpeed();
+        currentSpeed = loadOut.getSpeed();
         healthRegen = loadOut.getHealthRegen();
+        this.currentSpeed = this.maxSpeed;
         health = maxHealth;
         isLiving = true;
     }
 
     public void init(Main main, Environment environment) {
-        main.getFlyByCamera().setMoveSpeed(speed * 3);
+        main.getFlyByCamera().setMoveSpeed(currentSpeed * 3);
         this.setMaxSlope(10);
         this.setJumpSpeed(20);
         this.setFallSpeed(30);
-        this.setGravity(30);
+        this.setGravity(35);
         this.setPhysicsLocation(new Vector3f(-50, 100, 0));
-    }
-
-    public void attack() {
-        this.getCurrentWeapon().shoot();
-    }
-
-    public Weapon getCurrentWeapon() {
-        return currentWeapon;
-    }
-
-    public void setCurrentWeapon(int i) {
-        currentWeapon = this.loadOut.getWeapon(i);
     }
 
     public void update(Main main, Controls controls) {
         Camera cam = main.getCam();
-        camDir.set(cam.getDirection()).multLocal(speed);
-        camLeft.set(cam.getLeft()).multLocal(speed / 2);
+        camDir.set(cam.getDirection()).multLocal(currentSpeed);
+        camLeft.set(cam.getLeft()).multLocal(currentSpeed / 2);
         walkDirection.set(0, 0, 0);
         if (controls.getIsLeft()) {
             if (this.onGround()) {
                 walkDirection.addLocal(camLeft);
             } else {
-                camLeft.set(cam.getLeft()).multLocal(speed / 2.5f);
+                camLeft.set(cam.getLeft()).multLocal(currentSpeed / 2.5f);
                 walkDirection.addLocal(camLeft);
             }
         }
@@ -90,7 +80,7 @@ public class Player extends CharacterControl {
             if (this.onGround()) {
                 walkDirection.addLocal(camLeft.negate());
             } else {
-                camLeft.set(cam.getLeft()).multLocal(speed / 2.5f);
+                camLeft.set(cam.getLeft()).multLocal(currentSpeed / 2.5f);
                 walkDirection.addLocal(camLeft.negate());
             }
         }
@@ -98,7 +88,7 @@ public class Player extends CharacterControl {
             if (this.onGround()) {
                 walkDirection.addLocal(camDir);
             } else {
-                camDir.set(cam.getDirection()).multLocal(speed / 1.5f);
+                camDir.set(cam.getDirection()).multLocal(currentSpeed / 1.5f);
                 walkDirection.addLocal(camDir);
             }
         }
@@ -107,13 +97,14 @@ public class Player extends CharacterControl {
                 if (this.onGround()) {
                     walkDirection.addLocal(camDir.negate());
                 } else {
-                    camDir.set(cam.getDirection()).multLocal(speed / 1.5f);
+                    camDir.set(cam.getDirection()).multLocal(currentSpeed / 1.5f);
                     walkDirection.addLocal(camDir.negate());
                 }
             } else {
                 walkDirection.addLocal(camDir.negate().setY(-.3f));
             }
         }
+
         if (cam.getDirection().getY() >= 0.5) {
             Vector3f newCamDirection = cam.getDirection();
             newCamDirection.setY(0.4999f);
@@ -124,6 +115,17 @@ public class Player extends CharacterControl {
             newCamDirection.setY(newCamDirection.getY() - newCamDirection.getY() - 0.6f);
             cam.lookAtDirection(newCamDirection, cam.getUp());
         }
+
+        if (controls.getIsPulling()) {
+            this.currentWeapon.pull(1);
+            currentSpeed = this.maxSpeed / 2;
+        } else {
+            if (this.currentWeapon.getCurrentDrawback() >= 1) {
+                this.currentWeapon.release();
+            }
+            currentSpeed = this.maxSpeed;
+        }
+
 
         //prevent camera glitch by stabalizing Roll
         float[] angles = {0, 0, 0};

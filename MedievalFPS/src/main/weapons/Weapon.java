@@ -12,17 +12,27 @@ import main.projectiles.Projectile;
  */
 public interface Weapon {
 
+    public void init(float additionalRange, float additionalAccuracy, float additionalDamage);
+
     public String getName();
 
     public float getBaseDamage();
 
     public Projectile getAmoType();
 
-    public void getRange();
+    public int getMaxDrawback();
+
+    public int getCurrentDrawback();
+
+    public float getBaseRange();
 
     public String getModelPath();
 
     public String getIconPath();
 
-    public void shoot();
+    public void release();
+
+    public void pull(int amount);
+
+    public float getBaseAccuracy();
 }
