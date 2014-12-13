@@ -5,13 +5,13 @@
 package main;
 
 import main.frames.Frame;
+import main.frames.MainMenu;
 
 /**
  *
  * @author MattH
  */
 public class FrameHandler {
-
     private static Frame currentFrame;
     private static Frame[] frames;
 

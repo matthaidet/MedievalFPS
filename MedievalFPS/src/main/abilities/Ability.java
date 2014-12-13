@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package abilities;
+package main.abilities;
 
 import com.jme3.texture.Image;
 import main.Player;

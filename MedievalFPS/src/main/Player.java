@@ -21,12 +21,12 @@ public class Player extends CharacterControl {
     private float health;
     private float maxHealth;
     private float healthRegen;
-    private int deaths;
+    private short deaths;
     private boolean isLiving;
     private LoadOut loadOut;
     private Weapon currentWeapon;
     private String name;
-    private int remainingRespawnTime;
+    private short remainingRespawnTime;
     private float currentSpeed, maxSpeed;
     private Vector3f position;
     private Vector3f camDir = new Vector3f();

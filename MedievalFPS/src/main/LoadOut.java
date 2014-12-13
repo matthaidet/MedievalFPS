@@ -4,7 +4,7 @@
  */
 package main;
 
-import abilities.Ability;
+import main.abilities.Ability;
 import main.weapons.Weapon;
 import traits.Trait;
 
